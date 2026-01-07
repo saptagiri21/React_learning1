@@ -13,6 +13,6 @@ function Click() {
 }
 
 function App() {
-  <Click />;
+  return <Click />;
 }
 export default App;
