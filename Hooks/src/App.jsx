@@ -16,9 +16,10 @@ function Click() {
 
 function OnClick() {
   const [count, setCount] = useState(0);
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
-    document.getElementById("count").innerText = "increased";
+    setMessage("increased");
   }, [count]);
 
   let click = () => {
@@ -29,7 +30,7 @@ function OnClick() {
       <h1>counter</h1>
       <p>{count}</p>
       <button onClick={click}>Increase</button>
-      <p id="count"></p>
+      <p>{message}</p>
     </>
   );
 }
