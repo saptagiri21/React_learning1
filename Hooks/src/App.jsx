@@ -35,11 +35,43 @@ function OnClick() {
   );
 }
 
+// giving user input and displaying it
+
+function Input() {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [fullName, setFullName] = useState("");
+  const click = () => {
+    setFullName(firstName + " " + lastName);
+  };
+
+  return (
+    <>
+      <h1>Giving user input and displaying it</h1>
+      <input
+        type="text"
+        placeholder=" First Name"
+        value={firstName}
+        onChange={(e) => setFirstName(e.target.value)}
+      />
+      <input
+        type="text"
+        placeholder="Last Name"
+        value={lastName}
+        onChange={(e) => setLastName(e.target.value)}
+      />
+      <button onClick={click}>Enter</button>
+      <p>{fullName}</p>
+    </>
+  );
+}
+
 function App() {
   return (
     <div>
       <Click />
       <OnClick />
+      <Input />
     </div>
   );
 }
