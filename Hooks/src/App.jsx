@@ -66,13 +66,115 @@ function Input() {
   );
 }
 
+// simple quizz app
+function QuizzApp() {
+  const questionsData = [
+    {
+      id: 1,
+      question: "What is React?",
+      options: [
+        "A database",
+        "A JavaScript library for building UI",
+        "A backend framework",
+        "An operating system",
+      ],
+      answerId: 1,
+    },
+    {
+      id: 2,
+      question: "Which hook is used for state in React?",
+      options: ["useEffect", "useContext", "useState", "useRef"],
+      answerId: 2,
+    },
+    {
+      id: 3,
+      question: "What does JSX stand for?",
+      options: [
+        "Java Syntax Extension",
+        "JavaScript XML",
+        "JSON XML",
+        "Java Source Extension",
+      ],
+      answerId: 1,
+    },
+    {
+      id: 4,
+      question: "Why is key used in React lists?",
+      options: [
+        "For styling",
+        "For API calls",
+        "To uniquely identify elements",
+        "To sort elements",
+      ],
+      answerId: 2,
+    },
+    {
+      id: 5,
+      question: "How do you pass props to a component?",
+      options: [
+        "<Comp props={data} />",
+        "<Comp data={data} />",
+        "<Comp(data)>",
+        "<Comp = data />",
+      ],
+      answerId: 1,
+    },
+  ];
+  const [questions, setQuestions] = useState(questionsData);
+  const [index, setIndex] = useState(0);
+  const [selectedOption, setSelectedoption] = useState(null);
+  const [count, setCount] = useState(0);
+  let currentquestion = questions[index];
+
+  const onSubmit = (e) => {
+    setSelectedoption(e);
+    if (e === currentquestion.answerId) {
+      setCount(count + 1);
+    }
+  };
+  const OnNext = () => {
+    if (index < questionsData.length - 1) {
+      setIndex(index + 1);
+      setSelectedoption(null);
+    }
+  };
+
+  //let q = questionsData.map(()=>{questions[i].question})
+
+  return (
+    <div>
+      <h1>Quizz APP</h1>
+      <div>
+        <p>{currentquestion.question}</p>
+        <div>
+          {currentquestion.options.map((option, index) => {
+            return (
+              <button
+                key={index}
+                onClick={() => onSubmit(index)}
+                disabled={selectedOption != null}
+              >
+                {option}
+              </button>
+            );
+          })}
+        </div>
+        <button onClick={OnNext}>Next</button>
+        <p>score:{count}</p>
+      </div>
+    </div>
+  );
+}
+
 function App() {
   return (
     <div>
       <Click />
       <OnClick />
       <Input />
+      <QuizzApp />
     </div>
   );
 }
+
 export default App;
