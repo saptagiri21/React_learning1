@@ -124,6 +124,8 @@ function QuizzApp() {
   const [index, setIndex] = useState(0);
   const [selectedOption, setSelectedoption] = useState(null);
   const [count, setCount] = useState(0);
+  const [isFinished, setIsFinished] = useState(false);
+
   let currentquestion = questions[index];
 
   const onSubmit = (e) => {
@@ -136,9 +138,21 @@ function QuizzApp() {
     if (index < questionsData.length - 1) {
       setIndex(index + 1);
       setSelectedoption(null);
+    } else {
+      setIsFinished(true);
     }
   };
 
+  if (isFinished) {
+    return (
+      <div>
+        <h1>Quiz Finished </h1>
+        <p>
+          Your Score: {count} / {questions.length}
+        </p>
+      </div>
+    );
+  }
   //let q = questionsData.map(()=>{questions[i].question})
 
   return (
@@ -160,7 +174,6 @@ function QuizzApp() {
           })}
         </div>
         <button onClick={OnNext}>Next</button>
-        <p>score:{count}</p>
       </div>
     </div>
   );
