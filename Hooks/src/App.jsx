@@ -156,24 +156,31 @@ function QuizzApp() {
   //let q = questionsData.map(()=>{questions[i].question})
 
   return (
-    <div>
+    <div className="container">
       <h1>Quizz APP</h1>
       <div>
-        <p>{currentquestion.question}</p>
+        <p className="question">{currentquestion.question}</p>
         <div>
-          {currentquestion.options.map((option, index) => {
-            return (
-              <button
-                key={index}
-                onClick={() => onSubmit(index)}
-                disabled={selectedOption != null}
-              >
-                {option}
-              </button>
-            );
-          })}
+          <ul className="options">
+            {currentquestion.options.map((option, index) => {
+              return (
+                <li>
+                  <button
+                    key={index}
+                    onClick={() => onSubmit(index)}
+                    disabled={selectedOption != null}
+                    className="option-button"
+                  >
+                    {option}
+                  </button>{" "}
+                </li>
+              );
+            })}
+          </ul>
         </div>
-        <button onClick={OnNext}>Next</button>
+        <button className="next-button" onClick={OnNext}>
+          Next
+        </button>
       </div>
     </div>
   );
