@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-function Click() {
+/*function Click() {
   let count = 0;
 
   function onClick() {
@@ -64,7 +64,7 @@ function Input() {
       <p>{fullName}</p>
     </>
   );
-}
+}*/
 
 // simple quizz app
 function QuizzApp() {
@@ -189,9 +189,6 @@ function QuizzApp() {
 function App() {
   return (
     <div>
-      <Click />
-      <OnClick />
-      <Input />
       <QuizzApp />
     </div>
   );
